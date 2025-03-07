@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj8pu1yvnxny"]
+
+[ext_resource type="Script" path="res://scripts/classes/bottle_ui.gd" id="1_lfnqm"]
+
+[node name="BottleUI" type="PanelContainer"]
+custom_minimum_size = Vector2(300, 300)
+offset_right = 300.0
+offset_bottom = 300.0
+script = ExtResource("1_lfnqm")
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ThemeLabel" type="Label" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "主題: 未知"
+
+[node name="AreaLabel" type="Label" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "來自: 未知"
+
+[node name="LastMessageLabel" type="Label" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "最後一條訊息: 無"
+autowrap_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ContentContainer" type="VBoxContainer" parent="MainContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ProgressLabel" type="Label" parent="MainContainer"]
+layout_mode = 2
+text = "0/10"
+horizontal_alignment = 1
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 10
+
+[node name="WriteButton" type="Button" parent="MainContainer/ButtonsContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "寫入"
+
+[node name="SkipButton" type="Button" parent="MainContainer/ButtonsContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "不寫入"

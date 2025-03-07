@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvnxnuqwj8pu1"]
+
+[ext_resource type="Script" path="res://scripts/classes/bottle_entry.gd" id="1_lfnqm"]
+
+[node name="BottleEntry" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 80)
+offset_right = 300.0
+offset_bottom = 80.0
+script = ExtResource("1_lfnqm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="AuthorLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "匿名"
+
+[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TimestampLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "2023-01-01 12:00"
+
+[node name="ContentLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "這是一條測試內容..."
+autowrap_mode = 3 

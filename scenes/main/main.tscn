@@ -1,0 +1,308 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8j8pu1yvnxnx"]
+
+[ext_resource type="Script" uid="uid://lyh3tw15yv1g" path="res://scripts/classes/main_scene.gd" id="1_lfnqm"]
+[ext_resource type="Script" uid="uid://gysf58tuwbjx" path="res://scripts/classes/write_dialog.gd" id="2_lfnqm"]
+[ext_resource type="Script" uid="uid://cgllvc8elwusd" path="res://scripts/classes/upgrade_panel.gd" id="3_lfnqm"]
+[ext_resource type="PackedScene" uid="uid://bqnxqxjyqvj8j" path="res://scenes/ui/task_panel.tscn" id="4_l3cfh"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lfnqm")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.85098, 0.94902, 1, 1)
+
+[node name="TopBar" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+
+[node name="EnergyLabel" type="Label" parent="TopBar"]
+layout_mode = 2
+text = "能量: 100/100"
+
+[node name="EnergyBar" type="ProgressBar" parent="TopBar"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+value = 100.0
+
+[node name="Spacer" type="Control" parent="TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RiverBottlesLabel" type="Label" parent="TopBar"]
+layout_mode = 2
+text = "漂流河: 100/100"
+
+[node name="ShellsIcon" type="TextureRect" parent="TopBar"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="ShellsLabel" type="Label" parent="TopBar"]
+layout_mode = 2
+text = "0"
+
+[node name="SaveButton" type="Button" parent="TopBar"]
+layout_mode = 2
+text = "保存"
+
+[node name="StatsPanel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = 60.0
+offset_right = -10.0
+offset_bottom = 110.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "漂流瓶統計:
+寫入 1 次: 0 個
+寫入 2 次: 0 個
+寫入 3 次: 0 個
+寫入 4 次: 0 個
+寫入 5 次: 0 個
+寫入 6 次: 0 個
+寫入 7 次: 0 個
+寫入 8 次: 0 個
+寫入 9 次: 0 個
+寫入 10 次: 0 個"
+
+[node name="ControlPanel" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="DigButton" type="Button" parent="ControlPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "挖掘漂流瓶"
+
+[node name="AreaSelector" type="OptionButton" parent="ControlPanel"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="ControlPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CollectionButton" type="Button" parent="ControlPanel"]
+layout_mode = 2
+text = "收藏"
+
+[node name="UpgradeButton" type="Button" parent="ControlPanel"]
+layout_mode = 2
+text = "升級"
+
+[node name="TaskButton" type="Button" parent="ControlPanel"]
+layout_mode = 2
+text = "任務"
+
+[node name="BottlesContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 60.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="WriteDialog" type="Window" parent="."]
+title = "寫入漂流瓶"
+initial_position = 2
+size = Vector2i(500, 400)
+visible = false
+script = ExtResource("2_lfnqm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WriteDialog"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="WriteDialog/VBoxContainer"]
+layout_mode = 2
+text = "請寫下你想放入漂流瓶的內容:"
+
+[node name="TextEdit" type="TextEdit" parent="WriteDialog/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "在這裡輸入文字..."
+wrap_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WriteDialog/VBoxContainer"]
+layout_mode = 2
+
+[node name="AuthorLabel" type="Label" parent="WriteDialog/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "署名:"
+
+[node name="AuthorEdit" type="LineEdit" parent="WriteDialog/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "匿名"
+placeholder_text = "你的名字"
+
+[node name="Spacer" type="Control" parent="WriteDialog/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CancelButton" type="Button" parent="WriteDialog/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "取消"
+
+[node name="ConfirmButton" type="Button" parent="WriteDialog/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "確認"
+
+[node name="UpgradePanel" type="Window" parent="."]
+title = "升級"
+initial_position = 2
+size = Vector2i(400, 500)
+visible = false
+script = ExtResource("3_lfnqm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradePanel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UpgradePanel/VBoxContainer"]
+layout_mode = 2
+text = "升級與解鎖"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="UpgradePanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="DiggingContainer" type="HBoxContainer" parent="UpgradePanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UpgradePanel/VBoxContainer/DiggingContainer"]
+layout_mode = 2
+text = "挖掘等級:"
+
+[node name="LevelLabel" type="Label" parent="UpgradePanel/VBoxContainer/DiggingContainer"]
+layout_mode = 2
+text = "等級: 1"
+
+[node name="Spacer" type="Control" parent="UpgradePanel/VBoxContainer/DiggingContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CostLabel" type="Label" parent="UpgradePanel/VBoxContainer/DiggingContainer"]
+layout_mode = 2
+text = "成本: 100 貝殼"
+
+[node name="UpgradeButton" type="Button" parent="UpgradePanel/VBoxContainer/DiggingContainer"]
+layout_mode = 2
+text = "升級"
+
+[node name="StorageContainer" type="HBoxContainer" parent="UpgradePanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UpgradePanel/VBoxContainer/StorageContainer"]
+layout_mode = 2
+text = "存儲容量:"
+
+[node name="LevelLabel" type="Label" parent="UpgradePanel/VBoxContainer/StorageContainer"]
+layout_mode = 2
+text = "容量: 5"
+
+[node name="Spacer" type="Control" parent="UpgradePanel/VBoxContainer/StorageContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CostLabel" type="Label" parent="UpgradePanel/VBoxContainer/StorageContainer"]
+layout_mode = 2
+text = "成本: 200 貝殼"
+
+[node name="UpgradeButton" type="Button" parent="UpgradePanel/VBoxContainer/StorageContainer"]
+layout_mode = 2
+text = "升級"
+
+[node name="HSeparator2" type="HSeparator" parent="UpgradePanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="UpgradePanel/VBoxContainer"]
+layout_mode = 2
+text = "解鎖區域"
+horizontal_alignment = 1
+
+[node name="AreasContainer" type="VBoxContainer" parent="UpgradePanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CloseButton" type="Button" parent="UpgradePanel/VBoxContainer"]
+layout_mode = 2
+text = "關閉"
+
+[node name="CollectionPanel" type="Window" parent="."]
+title = "收藏的漂流瓶"
+initial_position = 2
+size = Vector2i(600, 500)
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CollectionPanel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CollectionPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BottlesContainer" type="VBoxContainer" parent="CollectionPanel/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CloseButton" type="Button" parent="CollectionPanel/VBoxContainer"]
+layout_mode = 2
+text = "關閉"
+
+[node name="TaskPanel" parent="." instance=ExtResource("4_l3cfh")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="TopBar/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="ControlPanel/CollectionButton" to="." method="_on_collection_button_pressed"]
+[connection signal="pressed" from="ControlPanel/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
+[connection signal="pressed" from="CollectionPanel/VBoxContainer/CloseButton" to="CollectionPanel" method="hide"]
